@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx-istio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-istio
+  template:
+    metadata:
+      labels:
+        sidecar.istio.io/inject: "true"
+        app: nginx-istio
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+      nodeSelector:
+        kubernetes.io/hostname: c1-worker-2

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ubuntu
+  name: ubuntu
+spec:
+  containers:
+  - command:
+    - /bin/sleep
+    - 365d
+    image: ubuntu:20.04
+    name: ubuntu
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

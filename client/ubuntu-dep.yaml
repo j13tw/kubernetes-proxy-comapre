@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ubuntu
+  name: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+      - image: ubuntu:20.04
+        name: ubuntu
+        command:
+        - /bin/sleep
+        - 365d
+      nodeSelector:
+        kubernetes.io/hostname: c1-worker-3
